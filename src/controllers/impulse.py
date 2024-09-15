@@ -1,16 +1,28 @@
-from flask import Flask
-from flask_restx import Api, Resource  # Alteração de restplus para restx
+from flask import Blueprint, jsonify
+from flasgger import swag_from
 
-from src.server.instance import server
+# Cria um Blueprint para o módulo impulse
+impulse_bp = Blueprint('impulse_bp', __name__)
 
-app, api = server.app, server.api
-
-primeiro_teste_db = [
-    {'id': 0, 'title': 'Teste 1'},
-    {'id': 1, 'title': 'Teste 2'}
-]
-
-@api.route('/impulse')
-class Impulse(Resource):
-    def get(self):
-        return primeiro_teste_db
+@impulse_bp.route('/status', methods=['GET'])
+@swag_from({
+    'responses': {
+        200: {
+            'description': 'Retorna o status da API',
+            'examples': {
+                'application/json': {
+                    "status": "API está funcionando!"
+                }
+            }
+        }
+    }
+})
+def status():
+    """
+    Verifica o status da API
+    ---
+    responses:
+      200:
+        description: Retorna o status da API
+    """
+    return jsonify({"status": "API está funcionando!"})
