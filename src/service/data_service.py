@@ -3,13 +3,22 @@ from datetime import datetime
 from src.repository.weather_station_repository import WeatherStationRepository
 
 class DataService:
-    def __init__(self, fiware_url):
-        self.repository = WeatherStationRepository(fiware_url)
+    def __init__(self, sth_comet_ip, sth_comet_port, service, service_path, orion_host, orion_port):
+        # Repositório que mantém a conexão com a API do Fiware e STH-Comet
+        self.repository = WeatherStationRepository(orion_host, orion_port, service, service_path)
+        self.sth_comet_ip = sth_comet_ip
+        self.sth_comet_port = sth_comet_port
+        self.service = service
+        self.service_path = service_path
 
     def get_weather_data_service(self, entity_id):
+        """Obtém dados meteorológicos usando a repository."""
         return self.repository.get_weather_data(entity_id)
-    
+
     def extract_data_service(self, date_from, date_to, limit, entities):
+        """
+        Extrai os dados do STH-Comet para múltiplas entidades e atributos.
+        """
         combined_data = {}
         
         for entity in entities:
@@ -19,6 +28,7 @@ class DataService:
             
             for attribute in attributes:
                 try:
+                    # Obtém os dados do STH-Comet via repository
                     attribute_data = self.get_sth_comet_data(entity_id, entity_type, attribute, date_from, date_to, limit)
                     for record in attribute_data:
                         timestamp = record['recvTime']
@@ -30,6 +40,10 @@ class DataService:
 
         if combined_data:
             combined_data = self.convert_types(list(combined_data.values()))
+
+            # Salva o resultado em um arquivo .txt
+            self.save_to_txt(combined_data)
+
             return combined_data
         else:
             return {"message": "No data found"}
@@ -38,9 +52,11 @@ class DataService:
         offset = 0
         attribute_data = []
 
+        sth_comet_url = f"http://{self.sth_comet_ip}:{self.sth_comet_port}"
+
         try:
             while True:
-                url = f'http://{sth_comet_ip}:{sth_comet_port}/STH/v1/contextEntities/type/{entity_type}/id/{entity_id}/attributes/{attribute}'
+                url = f'{sth_comet_url}/STH/v1/contextEntities/type/{entity_type}/id/{entity_id}/attributes/{attribute}'
                 params = {
                     'hLimit': limit,
                     'hOffset': offset,
@@ -48,8 +64,8 @@ class DataService:
                     'dateTo': date_to
                 }
                 headers = {
-                    'Fiware-Service': service,
-                    'Fiware-ServicePath': service_path
+                    'Fiware-Service': self.service,
+                    'Fiware-ServicePath': self.service_path
                 }
 
                 print(f"Request URL: {url}")
@@ -84,6 +100,7 @@ class DataService:
             return attribute_data
 
     def convert_types(self, data):
+        """Converte tipos de dados para garantir que os formatos estejam corretos."""
         if isinstance(data, list):
             return [self.convert_types(item) for item in data]
         elif isinstance(data, dict):
@@ -92,3 +109,13 @@ class DataService:
             return data.isoformat()
         else:
             return data
+
+    def save_to_txt(self, data):
+        """Salva os dados extraídos em um arquivo .txt."""
+        try:
+            with open('extracted_data.txt', 'w') as file:
+                for record in data:
+                    file.write(f"{record}\n")
+            print("Dados salvos em extracted_data.txt")
+        except Exception as e:
+            print(f"Erro ao salvar o arquivo: {e}")

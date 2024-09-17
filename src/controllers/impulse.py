@@ -1,13 +1,29 @@
 from flask import Blueprint, jsonify, request
 from src.service.data_service import DataService
 from flasgger import swag_from
+import json
+import os
+
+# Caminho para o arquivo config.json
+config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../config.json')
+
+# Carrega as configurações do arquivo JSON
+with open(config_path, 'r') as config_file:
+    config = json.load(config_file)
+
+# Extrai as configurações necessárias
+sth_comet_ip = config['sth_comet_host']
+sth_comet_port = config['sth_comet_port']
+service = config['fiware_service']
+service_path = config['fiware_service_path']
+orion_host = config['orion_context_broker_host']
+orion_port = config['orion_context_broker_port']
 
 # Cria um Blueprint para o módulo impulse
 impulse_bp = Blueprint('impulse_bp', __name__)
 
-# Instancia o DataService com a URL do Fiware
-fiware_url = "http://fiware-orion-url:1026"  # Substitua pela URL correta
-data_service = DataService(fiware_url)
+# Instancia o DataService com as configurações carregadas
+data_service = DataService(sth_comet_ip, sth_comet_port, service, service_path, orion_host, orion_port)
 
 @impulse_bp.route('/weather/<entity_id>', methods=['GET'])
 @swag_from({
@@ -43,7 +59,9 @@ def get_weather(entity_id):
         description: Estação meteorológica não encontrada
     """
     data = data_service.get_weather_data_service(entity_id)
-    return jsonify(data), 200 if 'error' not in data else 404
+    if 'error' in data:
+        return jsonify(data), 404
+    return jsonify(data), 200
 
 @impulse_bp.route('/extract_data', methods=['POST'])
 @swag_from({
@@ -63,7 +81,6 @@ def get_weather(entity_id):
         }
     }
 })
-
 def extract_data():
     """
     Extrai dados de múltiplas entidades e atributos
@@ -114,6 +131,12 @@ def extract_data():
     """
     try:
         data = request.json
+        # Verificação básica de campos obrigatórios
+        required_fields = ['date_from', 'date_to', 'limit', 'entities']
+        for field in required_fields:
+            if field not in data:
+                return jsonify({"error": f"Missing required field: {field}"}), 400
+        
         date_from = data['date_from']
         date_to = data['date_to']
         limit = data['limit']
