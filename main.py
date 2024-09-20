@@ -1,10 +1,10 @@
 import json
 from src.server.instance import app
-from src.controllers.impulse import impulse_bp
+from controllers.data_extraction_module_controller import impulse_bp
 from flasgger import Swagger
 
 # Carregar as configurações do arquivo config.json
-with open('config.json') as config_file:
+with open('src/config.json') as config_file:
     config = json.load(config_file)
 
 # Inicializa o Swagger
