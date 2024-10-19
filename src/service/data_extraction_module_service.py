@@ -1,4 +1,4 @@
-from repository.data_extraction_module_repository import get_sth_comet_data
+from src.repository.data_extraction_module_repository import get_sth_comet_data
 from datetime import datetime
 
 def convert_types(data):

@@ -1,5 +1,7 @@
 import requests
-from config import config
+import json
+with open('src/config.json') as config_file:  # Ajuste o caminho para refletir sua estrutura
+    config = json.load(config_file)
 
 def get_sth_comet_data(entity_id, attribute, date_from, date_to, limit):
     """
