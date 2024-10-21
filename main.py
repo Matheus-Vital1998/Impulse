@@ -1,14 +1,15 @@
 import json
 from src.server.instance import app
-from src.controllers.impulse import impulse_bp
+from src.controllers.data_extraction_module_controller import register_extraction_routes
+from src.controllers.health_check_controller import register_health_routes
 from flasgger import Swagger
 
 # Carregar as configurações do arquivo config.json
-with open('config.json') as config_file:
+with open('src/config.json') as config_file:
     config = json.load(config_file)
 
 # Inicializa o Swagger
-swagger = Swagger(app, config={
+swagger = Swagger(app, config={  # Simples inicialização do Swagger
     "headers": [],
     "specs": [
         {
@@ -23,8 +24,9 @@ swagger = Swagger(app, config={
     "specs_route": "/apidocs/"
 })
 
-# Registro do Blueprint do controlador impulse
-app.register_blueprint(impulse_bp, url_prefix='/api')
+# Registrar rotas das controllers
+register_extraction_routes(app)
+register_health_routes(app)
 
 # Exemplo de acesso às variáveis de configuração carregadas
 sth_comet_host = config['sth_comet_host']
@@ -39,5 +41,5 @@ print(f"STH Comet Host: {sth_comet_host}")
 print(f"Orion Context Broker Host: {orion_context_broker_host}")
 
 if __name__ == '__main__':
-    # Inicia o servidor
+    # Inicia o servidor Flask, já que você está usando Flask diretamente
     app.run(debug=True)
