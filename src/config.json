@@ -1,7 +1,7 @@
 {
-  "sth_comet_host": "10.2.20.26",
+  "sth_comet_host": "10.2.20.41",
   "sth_comet_port": 8666,
-  "orion_context_broker_host": "10.2.20.26",
+  "orion_context_broker_host": "10.2.20.41",
   "orion_context_broker_port": 1026,
   "fiware_service": "smart",
   "fiware_service_path": "/"
