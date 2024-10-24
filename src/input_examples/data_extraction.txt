@@ -1,0 +1,12 @@
+{
+  "entities": [
+    {
+      "entity_id": "urn:ngsi-ld:SPweather:001",
+      "entity_type": "WeatherStation",
+      "attributes": [
+        "TEMPERATURA_DO_AR_BULBO_SECO_HORARIA_Celsius",
+        "UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage"
+      ]
+    }
+  ]
+}

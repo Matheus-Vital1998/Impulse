@@ -2,10 +2,11 @@
 
 from src.repository.data_extraction_repository import get_sth_comet_data
 from datetime import datetime
+import csv
 
 def convert_types(data):
     """
-    Converte objetos datetime para strings ISO format.
+    Converte objetos datetime para strings no formato ISO.
     """
     if isinstance(data, list):
         return [convert_types(item) for item in data]
@@ -18,13 +19,14 @@ def convert_types(data):
 
 def extract_data(input_data, date_from, date_to):
     """
-    Serviço responsável por extrair e combinar os dados das entidades e atributos.
+    Serviço responsável por extrair e combinar os dados das entidades e atributos,
+    e salvar os dados em 'sth-comet_data.csv'.
     """
     combined_data = {}
 
     for entity in input_data["entities"]:
         entity_id = entity["entity_id"]
-        entity_type = entity.get("entity_type", "DefaultType")  # Define um tipo padrão se não for fornecido
+        entity_type = entity.get("entity_type", "DefaultType")
         attributes = entity["attributes"]
         
         for attribute in attributes:
@@ -41,4 +43,24 @@ def extract_data(input_data, date_from, date_to):
             )
 
     combined_data_list = convert_types(list(combined_data.values()))
-    return combined_data_list
+
+    # Salvar os dados combinados em CSV
+    save_data_to_csv(combined_data_list, input_data)
+
+def save_data_to_csv(data_list, input_data):
+    """
+    Salva os dados extraídos em um arquivo CSV chamado 'sth-comet_data.csv'.
+    """
+    filename = 'sth-comet_data.csv'
+    headers = ['timestamp'] + [
+        f"{entity['entity_id']}_{attr}"
+        for entity in input_data["entities"]
+        for attr in entity["attributes"]
+    ]
+
+    with open(filename, mode='w', newline='', encoding='utf-8') as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=headers)
+        writer.writeheader()
+        for data in data_list:
+            writer.writerow(data)
+    print(f'Dados extraídos e salvos em "{filename}". Total de registros: {len(data_list)}')
