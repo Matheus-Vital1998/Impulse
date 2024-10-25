@@ -1,0 +1,22 @@
+{
+  "target_name": "UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage",
+  "allowed_deviation": 15.0,
+  "threshold_max": 100,
+  "threshold_min": 20,
+  "feature_flags": {
+    "hour": true,
+    "minute": true,
+    "second": true,
+    "millisecond": true,
+    "day_of_year": true,
+    "week_of_year": true,
+    "month": true,
+    "year": true,
+    "day_of_week": true,
+    "quarter": true,
+    "is_weekend": true
+  },
+  "xgboost_hyperparameters": {
+    "n_estimators": 500
+  }
+}

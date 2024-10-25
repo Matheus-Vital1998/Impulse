@@ -6,6 +6,7 @@ from src.controllers.data_extraction_controller import register_extraction_route
 from src.controllers.health_check_controller import register_health_routes
 from src.controllers.attribute_mapping_controller import register_attribute_mapping_routes
 from src.controllers.xgboost_train_controller import register_xgboost_train_routes
+from src.controllers.predict_and_anomaly_detection_controller import register_prediction_routes
 from flasgger import Swagger
 
 # Carregar as configurações do arquivo config.json
@@ -29,10 +30,11 @@ swagger = Swagger(app, config={
 })
 
 # Registrar rotas das controllers
-register_extraction_routes(app)
 register_health_routes(app)
+register_extraction_routes(app)
 register_attribute_mapping_routes(app)
 register_xgboost_train_routes(app)
+register_prediction_routes(app)
 
 # Exemplo de acesso às variáveis de configuração carregadas
 sth_comet_host = config['sth_comet_host']
