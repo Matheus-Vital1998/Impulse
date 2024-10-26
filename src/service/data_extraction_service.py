@@ -3,6 +3,8 @@
 from src.repository.data_extraction_repository import get_sth_comet_data
 from datetime import datetime
 import csv
+import shutil
+import os
 
 def convert_types(data):
     """
@@ -47,6 +49,9 @@ def extract_data(input_data, date_from, date_to):
     # Salvar os dados combinados em CSV
     save_data_to_csv(combined_data_list, input_data)
 
+    # Criar uma cópia de 'sth-comet_data.csv' nomeada 'preprocessing_data.csv'
+    create_preprocessing_copy('sth-comet_data.csv', 'preprocessing_data.csv')
+
 def save_data_to_csv(data_list, input_data):
     """
     Salva os dados extraídos em um arquivo CSV chamado 'sth-comet_data.csv'.
@@ -64,3 +69,16 @@ def save_data_to_csv(data_list, input_data):
         for data in data_list:
             writer.writerow(data)
     print(f'Dados extraídos e salvos em "{filename}". Total de registros: {len(data_list)}')
+
+def create_preprocessing_copy(source_file, destination_file):
+    """
+    Função para criar uma cópia do arquivo de dados para pré-processamento.
+    """
+    try:
+        if os.path.exists(source_file):
+            shutil.copyfile(source_file, destination_file)
+            print(f"Cópia de '{source_file}' criada como '{destination_file}'.")
+        else:
+            print(f"O arquivo '{source_file}' não foi encontrado.")
+    except Exception as e:
+        print(f"Erro ao copiar o arquivo: {e}")
