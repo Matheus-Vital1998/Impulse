@@ -1,6 +1,6 @@
 {
   "treatment_options": {
-    "urn:ngsi-ld:SPweather:001_PRECIPITACAO_TOTAL_HORARIO_mm": {
+    "urn:ngsi-ld:SPweather:001_UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage": {
       "missing_values": "mean",
       "outliers": "remove"
     },

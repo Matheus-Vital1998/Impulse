@@ -1,5 +1,5 @@
 {
-  "target_name": "UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage",
+  "target_name": "urn:ngsi-ld:SPweather:001_UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage",
   "allowed_deviation": 15.0,
   "threshold_max": 100,
   "threshold_min": 20,

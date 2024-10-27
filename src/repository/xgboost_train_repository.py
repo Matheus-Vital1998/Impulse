@@ -3,6 +3,14 @@
 import pandas as pd
 import os
 import json
+import re
+
+def sanitize_filename(name):
+    """
+    Substitui caracteres inválidos por sublinhados para criar um nome de arquivo válido no Windows.
+    """
+    # Define os caracteres inválidos no Windows
+    return re.sub(r'[<>:"/\\|?*]', '_', name)
 
 def load_data(file_path, target_name):
     """Carrega o conjunto de dados e extrai a variável alvo."""
@@ -15,7 +23,8 @@ def load_data(file_path, target_name):
 def save_trained_model(model, target_name):
     """Salva o modelo treinado na pasta 'trained_models'."""
     os.makedirs('trained_models', exist_ok=True)
-    model_filename = os.path.join('trained_models', f"{target_name}_xgboost_model.json")
+    sanitized_target_name = sanitize_filename(target_name)
+    model_filename = os.path.join('trained_models', f"{sanitized_target_name}_xgboost_model.json")
     model.save_model(model_filename)
     return model_filename
 

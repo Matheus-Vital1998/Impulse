@@ -3,6 +3,7 @@
 import json
 from src.server.instance import app
 from src.controllers.data_extraction_controller import register_extraction_routes
+from src.controllers.data_preprocessing_controller import register_preprocessing_routes
 from src.controllers.health_check_controller import register_health_routes
 from src.controllers.attribute_mapping_controller import register_attribute_mapping_routes
 from src.controllers.xgboost_train_controller import register_xgboost_train_routes
@@ -31,8 +32,9 @@ swagger = Swagger(app, config={
 
 # Registrar rotas das controllers
 register_health_routes(app)
-register_extraction_routes(app)
 register_attribute_mapping_routes(app)
+register_extraction_routes(app)
+register_preprocessing_routes(app)
 register_xgboost_train_routes(app)
 register_prediction_routes(app)
 
