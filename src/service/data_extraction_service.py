@@ -50,7 +50,7 @@ def extract_data(input_data, date_from, date_to):
     save_data_to_csv(combined_data_list, input_data)
 
     # Criar uma cópia de 'sth-comet_data.csv' nomeada 'preprocessing_data.csv'
-    create_preprocessing_copy('sth-comet_data.csv', 'preprocessed_data.csv')
+    create_preprocessing_copy('sth-comet_data.csv', 'processed_data.csv')
 
 def save_data_to_csv(data_list, input_data):
     """
