@@ -1,0 +1,7 @@
+{
+  "target_name": "UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage",
+  "allowed_deviation": 3.0,
+  "threshold_max": 35,
+  "threshold_min": 10,
+  "forecast_horizon": 1440
+}
