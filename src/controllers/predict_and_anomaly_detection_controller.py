@@ -7,7 +7,7 @@ def register_prediction_routes(app):
     @app.route('/predict-and-anomaly-detection', methods=['POST'])
     def predict_and_anomaly_detection():
         """
-        Endpoint para realizar predição e detecção de anomalias.
+        Endpoint para realizar predição e detecção de anomalias futuras.
         ---
         tags:
           - Prediction
@@ -21,35 +21,34 @@ def register_prediction_routes(app):
                 target_name:
                   type: string
                   description: Nome da variável alvo a ser predita.
-                allowed_deviation:
-                  type: number
-                  description: Novo desvio permitido (opcional).
-                threshold_max:
-                  type: number
-                  description: Novo valor máximo permitido (opcional).
-                threshold_min:
-                  type: number
-                  description: Novo valor mínimo permitido (opcional).
                 forecast_horizon:
                   type: integer
                   description: Número de horas à frente para prever.
+          - in: header
+            name: Content-Type
+            required: true
+            type: string
+            default: application/json
         responses:
           200:
             description: Predição e detecção de anomalias realizadas com sucesso.
             schema:
-              type: array
-              items:
-                type: object
-                properties:
-                  timestamp:
-                    type: string
-                    format: date-time
-                  actual_data:
-                    type: number
-                  predicted_data:
-                    type: number
-                  anomaly_alert:
-                    type: boolean
+              type: object
+              properties:
+                message:
+                  type: string
+                data:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      timestamp:
+                        type: string
+                        format: date-time
+                      predicted_data:
+                        type: number
+                      anomaly_alert:
+                        type: boolean
           400:
             description: Requisição inválida.
           500:

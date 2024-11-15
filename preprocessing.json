@@ -1,0 +1,17 @@
+{
+    "timestamp": {
+        "missing_values": "",
+        "outliers": "",
+        "normalization": ""
+    },
+    "urn:ngsi-ld:SPweather:001_TEMPERATURA_DO_AR_BULBO_SECO_HORARIA_Celsius": {
+        "missing_values": "median",
+        "outliers": "cap",
+        "normalization": "standard"
+    },
+    "urn:ngsi-ld:SPweather:001_UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage": {
+        "missing_values": "mean",
+        "outliers": "remove",
+        "normalization": ""
+    }
+}
