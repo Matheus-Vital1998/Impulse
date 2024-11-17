@@ -126,7 +126,6 @@ No Linux
 
 Certifique-se de que as variáveis no arquivo `src/config.json` estão configuradas corretamente para apontar para os serviços STH-Comet e Orion Context Broker. Exemplo de configuração:
 
-![alt text](image.png)
 
 ### **Campos**
 
