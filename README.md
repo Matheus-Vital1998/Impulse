@@ -5,7 +5,7 @@ Impulse é um sistema modular para extração, processamento e análise de dados
 ---
 
 ## **Arquitetura**
-![alt text](image-11.png)
+![alt text](imagens/image-11.png)
 
 ---
 
@@ -26,15 +26,23 @@ O projeto segue uma arquitetura modular, dividida em:
 ## **Índice**
 
 1. [Recursos Disponíveis](#recursos-disponíveis)
+
 2. [Tecnologias Utilizadas](#tecnologias-utilizadas)
+
 3. [Pré-requisitos](#pré-requisitos)
+
 4. [Como Rodar o Projeto](#como-rodar-o-projeto)
    - [Usando Docker (Recomendado)](#usando-docker-recomendado)
    - [Rodando Localmente (Sem Docker)](#rodando-localmente-sem-docker)
+
 5. [Configurar FIWARE](#configurar-fiware)
+
 6. [Testar o Projeto](#testar-o-projeto)
+
 7. [Contribuição](#contribuição)
+
 8. [Problemas Conhecidos](#problemas-conhecidos)
+
 9. [Licença](#licença)
 
 ---
@@ -94,29 +102,29 @@ O projeto segue uma arquitetura modular, dividida em:
 1. Certifique-se de que o **[Docker Desktop](https://www.docker.com/products/docker-desktop)** está em execução.
 
 2. Construa a imagem Docker utilizando o código abaixo:
-   ![alt text](image-1.png)
+   ![alt text](imagens/image-1.png)
 
 3. Agora rode o comando abaixo no prompt de sua máquina para abrir a API:
-   ![alt text](image-2.png)
+   ![alt text](imagens/image-2.png)
 
 ### **Rodando Localmente (Sem Docker)**
 
 1. Instale o Python 3.10+ e crie um ambiente virtual:
-   ![alt text](image-3.png)
+   ![alt text](imagens/image-3.png)
    
 2. Ative o ambiente virtual:
 
 No Windows
-  ![alt text](image-4.png)
+  ![alt text](imagens/image-4.png)
 
 No Linux
-  ![alt text](image-5.png)
+  ![alt text](imagens/image-5.png)
 
 3. Instale as dependências necessárias:
-![alt text](image-7.png)
+![alt text](imagens/image-7.png)
 
 4. Execute o servidor Flask:
-![alt text](image-8.png)
+![alt text](imagens/image-8.png)
 
 5. Acesse a API em http://localhost:5000/apidocs.
 
@@ -125,6 +133,8 @@ No Linux
 ## **Configurar FIWARE**
 
 Certifique-se de que as variáveis no arquivo `src/config.json` estão configuradas corretamente para apontar para os serviços STH-Comet e Orion Context Broker. Exemplo de configuração:
+
+   ![alt text](imagens/image.png)
 
 
 ### **Campos**
@@ -167,16 +177,16 @@ Certifique-se de que as variáveis no arquivo `src/config.json` estão configura
 
 Se você deseja contribuir para o projeto, siga os passos abaixo:
 
-1. Faça o fork do repositório.
+1. Clone o repositório em sua maquina.
 
 2. Crie uma nova branch para suas alterações:
-   ![alt text](image-6.png)
+   ![alt text](imagens/image-6.png)
 
 3. Faça suas alterações e commit:
-   ![alt text](image-9.png)
+![alt text](imagens/image-14.png)
 
-4. Envie as alterações para o seu fork:
-   ![alt text](image-10.png)
+4. Envie as alterações por push para o repositorio:
+   ![alt text](imagens/image-10.png)
 
 5. Abra um pull request no repositório original.
 
