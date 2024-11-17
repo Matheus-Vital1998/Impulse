@@ -49,7 +49,11 @@ def extract_data(input_data, date_from, date_to):
     # Salvar os dados combinados em CSV
     save_data_to_csv(combined_data_list, input_data)
 
+<<<<<<< HEAD
     # Criar uma cópia de 'sth-comet_data.csv' nomeada 'preprocessing_data.csv'
+=======
+    # Criar uma cópia de 'sth-comet_data.csv' nomeada 'processed_data.csv'
+>>>>>>> nova-feature-docker
     create_preprocessing_copy('sth-comet_data.csv', 'processed_data.csv')
 
 def save_data_to_csv(data_list, input_data):

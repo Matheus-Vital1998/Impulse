@@ -1,6 +1,10 @@
 # main.py
 
 import json
+<<<<<<< HEAD
+=======
+from flask import redirect
+>>>>>>> nova-feature-docker
 from src.server.instance import app
 from src.controllers.data_extraction_controller import register_extraction_routes
 from src.controllers.data_preprocessing_controller import register_preprocessing_routes
@@ -30,11 +34,23 @@ swagger = Swagger(app, config={
     "specs_route": "/apidocs/"
 })
 
+<<<<<<< HEAD
 # Registrar rotas das controllers
 register_health_routes(app)
 register_attribute_mapping_routes(app)
 register_extraction_routes(app)
 register_preprocessing_routes(app)
+=======
+@app.route('/')
+def home():
+    return redirect('/apidocs')
+
+# Registrar rotas das controllers
+register_health_routes(app)
+register_extraction_routes(app)
+register_preprocessing_routes(app)
+register_attribute_mapping_routes(app)
+>>>>>>> nova-feature-docker
 register_xgboost_train_routes(app)
 register_prediction_routes(app)
 
@@ -52,4 +68,8 @@ print(f"Orion Context Broker Host: {orion_context_broker_host}")
 
 if __name__ == '__main__':
     # Inicia o servidor Flask
+<<<<<<< HEAD
     app.run(debug=True)
+=======
+    app.run(debug=True, host='0.0.0.0', port=5000)
+>>>>>>> nova-feature-docker

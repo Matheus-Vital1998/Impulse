@@ -7,7 +7,11 @@ def register_prediction_routes(app):
     @app.route('/predict-and-anomaly-detection', methods=['POST'])
     def predict_and_anomaly_detection():
         """
+<<<<<<< HEAD
         Endpoint para realizar predição e detecção de anomalias futuras.
+=======
+        Endpoint para realizar predição e detecção de anomalias.
+>>>>>>> nova-feature-docker
         ---
         tags:
           - Prediction
@@ -21,6 +25,7 @@ def register_prediction_routes(app):
                 target_name:
                   type: string
                   description: Nome da variável alvo a ser predita.
+<<<<<<< HEAD
                 forecast_horizon:
                   type: integer
                   description: Número de horas à frente para prever.
@@ -29,10 +34,25 @@ def register_prediction_routes(app):
             required: true
             type: string
             default: application/json
+=======
+                allowed_deviation:
+                  type: number
+                  description: Novo desvio permitido (opcional).
+                threshold_max:
+                  type: number
+                  description: Novo valor máximo permitido (opcional).
+                threshold_min:
+                  type: number
+                  description: Novo valor mínimo permitido (opcional).
+                forecast_horizon:
+                  type: integer
+                  description: Número de horas à frente para prever.
+>>>>>>> nova-feature-docker
         responses:
           200:
             description: Predição e detecção de anomalias realizadas com sucesso.
             schema:
+<<<<<<< HEAD
               type: object
               properties:
                 message:
@@ -49,6 +69,21 @@ def register_prediction_routes(app):
                         type: number
                       anomaly_alert:
                         type: boolean
+=======
+              type: array
+              items:
+                type: object
+                properties:
+                  timestamp:
+                    type: string
+                    format: date-time
+                  actual_data:
+                    type: number
+                  predicted_data:
+                    type: number
+                  anomaly_alert:
+                    type: boolean
+>>>>>>> nova-feature-docker
           400:
             description: Requisição inválida.
           500:

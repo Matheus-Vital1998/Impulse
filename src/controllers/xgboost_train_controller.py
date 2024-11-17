@@ -7,7 +7,11 @@ def register_xgboost_train_routes(app):
     @app.route('/train-xgboost-model', methods=['POST'])
     def train_xgboost_model_endpoint():
         """
+<<<<<<< HEAD
         Endpoint para treinar um modelo XGBoost com recursos avançados.
+=======
+        Endpoint para treinar um modelo XGBoost.
+>>>>>>> nova-feature-docker
         ---
         tags:
           - Model Training
@@ -32,6 +36,7 @@ def register_xgboost_train_routes(app):
                   description: Valor mínimo permitido para a variável alvo.
                 feature_flags:
                   type: object
+<<<<<<< HEAD
                   description: Flags para incluir ou excluir recursos.
                   properties:
                     hour:
@@ -86,6 +91,12 @@ def register_xgboost_train_routes(app):
                       type: number
                     min_child_weight:
                       type: number
+=======
+                  description: Flags para incluir ou excluir atributos.
+                xgboost_hyperparameters:
+                  type: object
+                  description: Hiperparâmetros para o modelo XGBoost.
+>>>>>>> nova-feature-docker
         responses:
           200:
             description: Modelo treinado com sucesso.

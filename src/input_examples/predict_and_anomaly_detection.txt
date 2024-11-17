@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "target_name": "urn:ngsi-ld:SPweather:001_TEMPERATURA_DO_AR_BULBO_SECO_HORARIA_Celsius",
+=======
+  "target_name": "UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage",
+>>>>>>> nova-feature-docker
   "allowed_deviation": 3.0,
   "threshold_max": 35,
   "threshold_min": 10,
