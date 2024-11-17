@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# Impulse
-Módulo de predição de dados com uso de machine learning para a plataforma Fiware
-=======
 # Impulse - Módulo de predição de dados com uso de machine learning para a plataforma Fiware
 
 Impulse é um sistema modular para extração, processamento e análise de dados integrados a plataformas FIWARE, como STH-Comet e Orion Context Broker. Ele foi projetado para gerenciar fluxos de dados complexos, realizar mapeamento de atributos, treinamento de modelos com XGBoost, e detecção de anomalias, com documentação acessível via Swagger.
@@ -210,9 +206,3 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 Se precisar de ajuda, abra uma issue no GitHub ou entre em contato com o responsável pelo projeto.
 
-
-
-
-
-
->>>>>>> nova-feature-docker
