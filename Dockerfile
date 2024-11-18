@@ -1,18 +1,21 @@
-# Usar uma imagem base do Python
+# Usar uma imagem base do Python slim
 FROM python:3.10-slim
 
-# Definir o diretório de trabalho
+# Configurar o diretório de trabalho
 WORKDIR /app
 
-# Copiar o arquivo requirements.txt e instalar as dependências
+# Copiar o arquivo requirements.txt para o container
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar o código da aplicação
+# Atualizar pip e instalar as dependências do projeto
+RUN pip install --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt
+
+# Copiar todo o código da aplicação para o container
 COPY . .
 
-# Expor a porta usada pelo Flask (padrão: 5000)
+# Expor a porta do servidor Flask
 EXPOSE 5000
 
-# Configurar o comando de execução do Flask
+# Comando para rodar a aplicação
 CMD ["python", "main.py"]

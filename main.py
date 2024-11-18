@@ -1,10 +1,5 @@
-# main.py
-
 import json
-<<<<<<< HEAD
-=======
-from flask import redirect
->>>>>>> nova-feature-docker
+from flask import redirect, jsonify
 from src.server.instance import app
 from src.controllers.data_extraction_controller import register_extraction_routes
 from src.controllers.data_preprocessing_controller import register_preprocessing_routes
@@ -18,7 +13,7 @@ from flasgger import Swagger
 with open('src/config.json') as config_file:
     config = json.load(config_file)
 
-# Inicializa o Swagger
+# Configuração do Swagger
 swagger = Swagger(app, config={
     "headers": [],
     "specs": [
@@ -31,28 +26,53 @@ swagger = Swagger(app, config={
     ],
     "static_url_path": "/flasgger_static",
     "swagger_ui": True,
-    "specs_route": "/apidocs/"
+    "specs_route": "/apidocs/",
+    "sorter": "none",
+    "info": {
+        "title": "Impulse API",
+        "description": """
+            Bem-vindo à documentação da API Impulse!<br>
+            Esta API é usada para operações de extração, processamento e predição de dados integrados ao FIWARE.
+        """,
+        "version": "1.0.0",
+        "termsOfService": "https://example.com/terms",
+        "contact": {
+            "name": "Equipe de Desenvolvimento",
+            "email": "mat.vital.santos@gmail.com",
+            "url": "https://github.com/Matheus-Vital1998/Impulse/tree/main?tab=readme-ov-file"
+        },
+        "license": {
+            "name": "MIT License",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "tags": [
+        {"name": "Health Check", "description": "Endpoints relacionados à saúde da API."},
+        {"name": "Attribute Mapping", "description": "Mapeamento de atributos para modelos de dados."},
+        {"name": "Data Extraction", "description": "Extração de dados do STH-Comet."},
+        {"name": "Preprocessing", "description": "Pré-processamento de dados para modelos preditivos."},
+        {"name": "Model Training", "description": "Treinamento de modelos usando XGBoost."},
+        {"name": "Prediction & Anomaly Detection", "description": "Predição e detecção de anomalias."}
+    ],
+    "uiSettings": {
+        "tagsSorter": "none",  # Ordena as tags conforme configuradas
+        "operationsSorter": "none",  # Ordena as operações conforme registradas
+        "docExpansion": "none",  # Recolhe descrições por padrão
+        "filter": True  # Adiciona um campo de filtro no Swagger UI
+    }
 })
 
-<<<<<<< HEAD
-# Registrar rotas das controllers
-register_health_routes(app)
-register_attribute_mapping_routes(app)
-register_extraction_routes(app)
-register_preprocessing_routes(app)
-=======
 @app.route('/')
 def home():
     return redirect('/apidocs')
 
-# Registrar rotas das controllers
-register_health_routes(app)
-register_extraction_routes(app)
-register_preprocessing_routes(app)
-register_attribute_mapping_routes(app)
->>>>>>> nova-feature-docker
-register_xgboost_train_routes(app)
-register_prediction_routes(app)
+# Registrar rotas das controllers na ordem desejada
+register_health_routes(app)  # 1. Health Check
+register_attribute_mapping_routes(app)  # 2. Attribute Mapping
+register_extraction_routes(app)  # 3. Data Extraction
+register_preprocessing_routes(app)  # 4. Preprocessing
+register_xgboost_train_routes(app)  # 5. Model Training
+register_prediction_routes(app)  # 6. Prediction & Anomaly Detection
 
 # Exemplo de acesso às variáveis de configuração carregadas
 sth_comet_host = config['sth_comet_host']
@@ -68,8 +88,4 @@ print(f"Orion Context Broker Host: {orion_context_broker_host}")
 
 if __name__ == '__main__':
     # Inicia o servidor Flask
-<<<<<<< HEAD
-    app.run(debug=True)
-=======
     app.run(debug=True, host='0.0.0.0', port=5000)
->>>>>>> nova-feature-docker

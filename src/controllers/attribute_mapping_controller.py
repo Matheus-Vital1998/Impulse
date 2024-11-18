@@ -1,5 +1,3 @@
-# src/controllers/attribute_mapping_controller.py
-
 from flask import jsonify, request
 from src.service.attribute_mapping_service import get_formatted_entities
 

@@ -22,7 +22,7 @@ def register_preprocessing_routes(app):
         Endpoint para pré-processar dados.
         ---
         tags:
-          - Data Preprocessing
+          - Preprocessing
         parameters:
           - in: body
             name: body

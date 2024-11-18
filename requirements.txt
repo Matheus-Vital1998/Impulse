@@ -1,10 +1,8 @@
 Flask==3.0.3
-flasgger==0.9.7.1
-<<<<<<< HEAD
-=======
+flasgger==0.9.7.2.dev2
 requests
 pandas
 scipy
 scikit-learn
 xgboost
->>>>>>> nova-feature-docker
+
