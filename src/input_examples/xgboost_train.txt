@@ -1,25 +1,14 @@
 {
-<<<<<<< HEAD
-  "target_name": "urn:ngsi-ld:SPweather:001_UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage",
-  "allowed_deviation": 15.0,
-  "threshold_max": 100,
-  "threshold_min": 20,
-=======
   "target_name": "urn:ngsi-ld:SPweather:001_TEMPERATURA_DO_AR_BULBO_SECO_HORARIA_Celsius",
   "allowed_deviation": 3.0,
-  "threshold_max": 35,
-  "threshold_min": 10,
->>>>>>> nova-feature-docker
+  "threshold_max": 36,
+  "threshold_min": 9,
   "feature_flags": {
     "hour": true,
     "minute": true,
     "second": true,
     "millisecond": true,
-<<<<<<< HEAD
     "day_of_year": true,
-=======
-    "day_of_year": true, 
->>>>>>> nova-feature-docker
     "week_of_year": true,
     "month": true,
     "year": true,
@@ -28,10 +17,7 @@
     "is_weekend": true
   },
   "xgboost_hyperparameters": {
-    "n_estimators": 500
+    "n_estimators": 500,
+    "learning_rate": 0.05
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> nova-feature-docker
