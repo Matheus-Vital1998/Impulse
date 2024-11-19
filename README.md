@@ -5,7 +5,7 @@ Impulse é um sistema modular para extração, processamento e análise de dados
 ---
 
 ## **Arquitetura**
-![alt text](imagens/image-11.png)
+![alt text](imagens/Arquitetura_GE_iMpuLse%20-%2012.jpg)
 
 ---
 
