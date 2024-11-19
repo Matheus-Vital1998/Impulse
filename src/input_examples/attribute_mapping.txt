@@ -1,0 +1,8 @@
+{
+  "entities": [
+    {
+      "entity_id": "urn:ngsi-ld:SPweather:001",
+      "entity_type": "WeatherStation"
+    }
+  ]
+}

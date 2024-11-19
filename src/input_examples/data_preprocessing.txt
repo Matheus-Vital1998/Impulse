@@ -1,0 +1,17 @@
+{
+  "treatment_options": {
+<<<<<<< HEAD
+    "urn:ngsi-ld:SPweather:001_UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage": {
+=======
+    "urn:ngsi-ld:SPweather:001_PRECIPITACAO_TOTAL_HORARIO_mm": {
+>>>>>>> nova-feature-docker
+      "missing_values": "mean",
+      "outliers": "remove"
+    },
+    "urn:ngsi-ld:SPweather:001_TEMPERATURA_DO_AR_BULBO_SECO_HORARIA_Celsius": {
+      "missing_values": "median",
+      "outliers": "cap",
+      "scaling": "standard"
+    }
+  }
+}

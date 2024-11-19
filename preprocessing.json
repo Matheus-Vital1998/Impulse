@@ -1,0 +1,27 @@
+{
+    "timestamp": {
+        "missing_values": "",
+        "outliers": "",
+        "normalization": ""
+    },
+    "urn:ngsi-ld:SPweather:001_TEMPERATURA_DO_AR_BULBO_SECO_HORARIA_Celsius": {
+        "missing_values": "median",
+        "outliers": "cap",
+        "normalization": "standard"
+    },
+    "urn:ngsi-ld:SPweather:001_UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage": {
+<<<<<<< HEAD
+        "missing_values": "mean",
+        "outliers": "remove",
+=======
+        "missing_values": "median",
+        "outliers": "cap",
+        "normalization": "standard"
+    },
+    "urn:ngsi-ld:SPweather:001_PRECIPITACAO_TOTAL_HORARIO_mm": {
+        "missing_values": "",
+        "outliers": "",
+>>>>>>> nova-feature-docker
+        "normalization": ""
+    }
+}

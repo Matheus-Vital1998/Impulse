@@ -1,0 +1,449 @@
+{
+    "urn:ngsi-ld:SPweather:001_UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage": {
+        "target_name": "urn:ngsi-ld:SPweather:001_UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage",
+        "model_filename": "urn_ngsi-ld_SPweather_001_UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage_xgboost_model.json",
+        "allowed_deviation": 15.0,
+        "threshold_max": 100,
+        "threshold_min": 20,
+        "feature_flags": {
+            "hour": true,
+            "minute": true,
+            "second": true,
+            "millisecond": true,
+            "day_of_year": true,
+            "week_of_year": true,
+            "month": true,
+            "year": true,
+            "day_of_week": true,
+            "quarter": true,
+            "is_weekend": true
+        },
+        "xgboost_hyperparameters": {
+            "n_estimators": 500,
+            "learning_rate": 0.1,
+            "max_depth": 6,
+            "subsample": 1,
+            "colsample_bytree": 1,
+            "gamma": 0,
+            "reg_alpha": 0,
+            "reg_lambda": 1,
+            "min_child_weight": 1
+        },
+        "training_metrics": {
+            "Cross-Validated Root Mean Squared Error": 17.34727760235606,
+            "Standard Deviation of CV RMSE": 1.753679065354472,
+            "Cross-Validated Mean Absolute Percentage Error": 0.18502939130478951,
+            "Standard Deviation of CV MAPE": 0.03349807802637411,
+            "Total Anomalies Detected": 369,
+            "Total Data Points": 19497,
+            "Anomaly Rate": 0.018925988613632868,
+            "Feature Importances Simplified": [
+                [
+                    "week_of_year",
+                    0.23904065787792206
+                ],
+                [
+                    "day_of_year",
+                    0.16068662703037262
+                ],
+                [
+                    "time_index",
+                    0.15770204365253448
+                ],
+                [
+                    "hour",
+                    0.1309093926101923
+                ],
+                [
+                    "quarter",
+                    0.11370023339986801
+                ],
+                [
+                    "day_of_week",
+                    0.1065432783216238
+                ],
+                [
+                    "month",
+                    0.07364608836360276
+                ],
+                [
+                    "year",
+                    0.012708534486591816
+                ],
+                [
+                    "minute",
+                    0.005063050426542759
+                ],
+                [
+                    "second",
+                    0.0
+                ],
+                [
+                    "millisecond",
+                    0.0
+                ],
+                [
+                    "is_weekend",
+                    0.0
+                ]
+            ],
+            "Feature Importances Detailed": [
+                [
+                    "quarter_cos",
+                    0.11370023339986801
+                ],
+                [
+                    "week_of_year_cos",
+                    0.09901843965053558
+                ],
+                [
+                    "day_of_year_cos",
+                    0.08552595227956772
+                ],
+                [
+                    "hour",
+                    0.08470914512872696
+                ],
+                [
+                    "week_of_year_sin",
+                    0.0719379410147667
+                ],
+                [
+                    "week_of_year",
+                    0.06808427721261978
+                ],
+                [
+                    "time_index_cos",
+                    0.05439988151192665
+                ],
+                [
+                    "time_index",
+                    0.052531465888023376
+                ],
+                [
+                    "time_index_sin",
+                    0.05077069625258446
+                ],
+                [
+                    "day_of_week_cos",
+                    0.04839804396033287
+                ],
+                [
+                    "day_of_year_sin",
+                    0.04304404929280281
+                ],
+                [
+                    "month_cos",
+                    0.040317535400390625
+                ],
+                [
+                    "day_of_year",
+                    0.03211662545800209
+                ],
+                [
+                    "month_sin",
+                    0.030781710520386696
+                ],
+                [
+                    "day_of_week",
+                    0.02936253324151039
+                ],
+                [
+                    "day_of_week_sin",
+                    0.02878270111978054
+                ],
+                [
+                    "hour_sin",
+                    0.027472807094454765
+                ],
+                [
+                    "hour_cos",
+                    0.018727440387010574
+                ],
+                [
+                    "year",
+                    0.012708534486591816
+                ],
+                [
+                    "minute",
+                    0.005063050426542759
+                ],
+                [
+                    "month",
+                    0.0025468424428254366
+                ],
+                [
+                    "minute_sin",
+                    0.0
+                ],
+                [
+                    "minute_cos",
+                    0.0
+                ],
+                [
+                    "second",
+                    0.0
+                ],
+                [
+                    "second_sin",
+                    0.0
+                ],
+                [
+                    "second_cos",
+                    0.0
+                ],
+                [
+                    "millisecond",
+                    0.0
+                ],
+                [
+                    "millisecond_sin",
+                    0.0
+                ],
+                [
+                    "millisecond_cos",
+                    0.0
+                ],
+                [
+                    "quarter",
+                    0.0
+                ],
+                [
+                    "quarter_sin",
+                    0.0
+                ],
+                [
+                    "is_weekend",
+                    0.0
+                ]
+            ]
+        }
+    },
+    "urn:ngsi-ld:SPweather:001_TEMPERATURA_DO_AR_BULBO_SECO_HORARIA_Celsius": {
+        "target_name": "urn:ngsi-ld:SPweather:001_TEMPERATURA_DO_AR_BULBO_SECO_HORARIA_Celsius",
+        "model_filename": "urn_ngsi-ld_SPweather_001_TEMPERATURA_DO_AR_BULBO_SECO_HORARIA_Celsius_xgboost_model.json",
+        "allowed_deviation": 3.0,
+        "threshold_max": 35,
+        "threshold_min": 10,
+        "feature_flags": {
+            "cycles": true,
+            "day_of_week": true,
+            "day_of_year": true,
+            "denoise": true,
+            "hour": true,
+            "is_weekend": true,
+            "millisecond": true,
+            "minute": true,
+            "month": true,
+            "quarter": true,
+            "seasonality": true,
+            "second": true,
+            "trend": true,
+            "week_of_year": true,
+            "year": true
+        },
+        "xgboost_hyperparameters": null,
+        "training_metrics": {
+            "Cross-Validated Root Mean Squared Error": 0.9107624850689163,
+            "Standard Deviation of CV RMSE": 0.11616111574442703,
+            "Cross-Validated Mean Absolute Percentage Error": 4.689680516523277,
+            "Standard Deviation of CV MAPE": 2.379657030657864,
+            "Feature Importances Simplified": [
+                [
+                    "day_of_year",
+                    0.3385771941393614
+                ],
+                [
+                    "week_of_year",
+                    0.19243909046053886
+                ],
+                [
+                    "hour",
+                    0.13454757817089558
+                ],
+                [
+                    "month",
+                    0.12992116482928395
+                ],
+                [
+                    "time_index",
+                    0.12630718760192394
+                ],
+                [
+                    "day_of_week",
+                    0.05407536402344704
+                ],
+                [
+                    "quarter",
+                    0.01523278933018446
+                ],
+                [
+                    "year",
+                    0.008153004571795464
+                ],
+                [
+                    "minute",
+                    0.0007466156966984272
+                ],
+                [
+                    "second",
+                    0.0
+                ],
+                [
+                    "millisecond",
+                    0.0
+                ],
+                [
+                    "is_weekend",
+                    0.0
+                ],
+                [
+                    "cycles",
+                    0.0
+                ],
+                [
+                    "denoise",
+                    0.0
+                ],
+                [
+                    "seasonality",
+                    0.0
+                ],
+                [
+                    "trend",
+                    0.0
+                ]
+            ],
+            "Feature Importances Detailed": [
+                [
+                    "day_of_year_cos",
+                    0.2665121257305145
+                ],
+                [
+                    "week_of_year_sin",
+                    0.10615895688533783
+                ],
+                [
+                    "hour",
+                    0.10141002386808395
+                ],
+                [
+                    "month_sin",
+                    0.06340614706277847
+                ],
+                [
+                    "month_cos",
+                    0.05973726883530617
+                ],
+                [
+                    "week_of_year_cos",
+                    0.051295503973960876
+                ],
+                [
+                    "day_of_year_sin",
+                    0.051277659833431244
+                ],
+                [
+                    "time_index_sin",
+                    0.05127493292093277
+                ],
+                [
+                    "time_index_cos",
+                    0.04379388317465782
+                ],
+                [
+                    "week_of_year",
+                    0.03498462960124016
+                ],
+                [
+                    "time_index",
+                    0.03123837150633335
+                ],
+                [
+                    "day_of_week_cos",
+                    0.025822138413786888
+                ],
+                [
+                    "hour_sin",
+                    0.021283000707626343
+                ],
+                [
+                    "day_of_year",
+                    0.02078740857541561
+                ],
+                [
+                    "day_of_week",
+                    0.016517914831638336
+                ],
+                [
+                    "quarter_cos",
+                    0.01523278933018446
+                ],
+                [
+                    "hour_cos",
+                    0.01185455359518528
+                ],
+                [
+                    "day_of_week_sin",
+                    0.011735310778021812
+                ],
+                [
+                    "year",
+                    0.008153004571795464
+                ],
+                [
+                    "month",
+                    0.006777748931199312
+                ],
+                [
+                    "minute",
+                    0.0007466156966984272
+                ],
+                [
+                    "minute_sin",
+                    0.0
+                ],
+                [
+                    "minute_cos",
+                    0.0
+                ],
+                [
+                    "second",
+                    0.0
+                ],
+                [
+                    "second_sin",
+                    0.0
+                ],
+                [
+                    "second_cos",
+                    0.0
+                ],
+                [
+                    "millisecond",
+                    0.0
+                ],
+                [
+                    "millisecond_sin",
+                    0.0
+                ],
+                [
+                    "millisecond_cos",
+                    0.0
+                ],
+                [
+                    "quarter",
+                    0.0
+                ],
+                [
+                    "quarter_sin",
+                    0.0
+                ],
+                [
+                    "is_weekend",
+                    0.0
+                ]
+            ]
+        }
+    }
+}
