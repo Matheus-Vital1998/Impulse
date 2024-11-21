@@ -7,7 +7,7 @@ def register_prediction_routes(app):
     @app.route('/predict-and-anomaly-detection', methods=['POST'])
     def predict_and_anomaly_detection():
         """
-        Endpoint para realizar predição e detecção de anomalias futuras.
+        Endpoint para realizar predição e detecção de anomalias.
         ---
         tags:
           - Prediction & Anomaly Detection
@@ -24,6 +24,23 @@ def register_prediction_routes(app):
                 forecast_horizon:
                   type: integer
                   description: Número de horas à frente para prever.
+                allowed_deviation:
+                  type: number
+                  description: Desvio permitido para detecção de anomalias.
+                threshold_max:
+                  type: number
+                  description: Valor máximo permitido para a variável alvo.
+                threshold_min:
+                  type: number
+                  description: Valor mínimo permitido para a variável alvo.
+                date_from:
+                  type: string
+                  format: date-time
+                  description: Data inicial para os dados históricos (ISO 8601).
+                date_to:
+                  type: string
+                  format: date-time
+                  description: Data final para os dados históricos (ISO 8601).
           - in: header
             name: Content-Type
             required: true
@@ -45,6 +62,8 @@ def register_prediction_routes(app):
                       timestamp:
                         type: string
                         format: date-time
+                      actual_data:
+                        type: number
                       predicted_data:
                         type: number
                       anomaly_alert:
