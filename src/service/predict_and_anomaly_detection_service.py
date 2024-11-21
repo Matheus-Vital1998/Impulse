@@ -52,7 +52,7 @@ def feature_engineering(data, feature_flags, params):
     # Atualizar o tratamento de NaNs
     data.ffill(inplace=True)
     data.bfill(inplace=True)
-    
+
     # Resetar o índice
     data.reset_index(drop=True, inplace=True)
 
@@ -129,11 +129,6 @@ def perform_prediction(params):
 
     # Carregar os dados históricos dentro do intervalo especificado
     data = load_processed_data(target_name, date_from=date_from, date_to=date_to)
-
-    # Verificar se o intervalo de datas não é muito grande
-    max_days = 90  # Limite máximo de dias permitidos
-    if (pd.to_datetime(date_to) - pd.to_datetime(date_from)).days > max_days:
-        raise ValueError(f"O intervalo de datas não pode exceder {max_days} dias.")
 
     # Verificar se há dados suficientes
     if data.empty:
