@@ -1,7 +1,9 @@
 {
   "target_name": "urn:ngsi-ld:SPweather:001_TEMPERATURA_DO_AR_BULBO_SECO_HORARIA_Celsius",
+  "forecast_horizon": 144,
   "allowed_deviation": 3.0,
-  "threshold_max": 35,
-  "threshold_min": 10,
-  "forecast_horizon": 1440
+  "threshold_max": 35.0,
+  "threshold_min": 10.0,
+  "date_from": "2024-10-01T00:00:00Z",
+  "date_to": "2024-10-31T23:59:59Z"
 }

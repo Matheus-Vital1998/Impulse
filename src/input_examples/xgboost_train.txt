@@ -1,7 +1,7 @@
 {
   "target_name": "urn:ngsi-ld:SPweather:001_TEMPERATURA_DO_AR_BULBO_SECO_HORARIA_Celsius",
   "allowed_deviation": 3.0,
-  "threshold_max": 36,
+  "threshold_max": 37,
   "threshold_min": 9,
   "feature_flags": {
     "hour": true,
@@ -14,7 +14,11 @@
     "year": true,
     "day_of_week": true,
     "quarter": true,
-    "is_weekend": true
+    "is_weekend": true,
+    "trend": true,
+    "seasonality": true,
+    "denoise": true,
+    "cycles": true
   },
   "xgboost_hyperparameters": {
     "n_estimators": 500,
