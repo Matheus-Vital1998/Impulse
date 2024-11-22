@@ -1,23 +1,10 @@
-version: '3.8'
+version: '3.8'  # Especifica a versão do Docker Compose
+
 services:
-  flask_app:
-    build: .
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "5000:5000"
-    environment:
-      - FLASK_ENV=development
-    depends_on:
-      - sth_comet
-      - orion
-    volumes:
-      - .:/app
-
-  sth_comet:
-    image: sth-comet-image  # Substitua pela imagem ou configuração do STH-Comet
-    ports:
-      - "8666:8666"         # Porta padrão do STH-Comet
-
-  orion:
-    image: orion-image      # Substitua pela imagem ou configuração do Orion
-    ports:
-      - "1026:1026"         # Porta padrão do Orion
+      - '5000:5000'
+    container_name: minha-api-flask
