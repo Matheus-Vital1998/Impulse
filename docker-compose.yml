@@ -7,4 +7,4 @@ services:
       dockerfile: Dockerfile
     ports:
       - '5000:5000'
-    container_name: minha-api-flask
+    container_name: impulse_api_flask
