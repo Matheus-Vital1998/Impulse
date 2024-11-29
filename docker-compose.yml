@@ -1,10 +1,35 @@
-version: '3.8'  # Especifica a versão do Docker Compose
+version: '3.8'
 
 services:
   api:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ./backend
+      dockerfile: Dockerfile.api
     ports:
       - '5000:5000'
     container_name: impulse_api_flask
+    volumes:
+      - ./backend:/app
+    environment:
+      - FLASK_ENV=development
+    networks:
+      - impulse_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    ports:
+      - '8501:8501'
+    container_name: impulse_frontend_flask
+    volumes:
+      - ./frontend:/app
+    environment:
+      - STREAMLIT_ENV=development
+    networks:
+      - impulse_network
+    depends_on:
+      - api
+
+networks:
+  impulse_network:

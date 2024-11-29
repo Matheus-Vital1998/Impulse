@@ -1,0 +1,27 @@
+{
+  "entities": [
+    {
+      "entity_id": "urn:ngsi-ld:SPweather:001",
+      "entity_type": "WeatherStation",
+      "attributes": [
+        "PRECIPITACAO_TOTAL_HORARIO_mm",
+        "PRESSAO_ATMOSFERICA_AO_NIVEL_DA_ESTACAO_HORARIA_mB",
+        "PRESSAO_ATMOSFERICA_MAX_NA_HORA_ANT_AUT_mB",
+        "PRESSAO_ATMOSFERICA_MIN_NA_HORA_ANT_AUT_mB",
+        "RADIACAO_GLOBAL_Kj_per_m2",
+        "TEMPERATURA_DO_AR_BULBO_SECO_HORARIA_Celsius",
+        "TEMPERATURA_DO_PONTO_DE_ORVALHO_Celsius",
+        "TEMPERATURA_MAXIMA_NA_HORA_ANT_AUT_Celsius",
+        "TEMPERATURA_MINIMA_NA_HORA_ANT_AUT_Celsius",
+        "TEMPERATURA_ORVALHO_MAX_NA_HORA_ANT_AUT_Celsius",
+        "TEMPERATURA_ORVALHO_MIN_NA_HORA_ANT_AUT_Celsius",
+        "UMIDADE_RELATIVA_DO_AR_HORARIA_Percentage",
+        "UMIDADE_REL_MAX_NA_HORA_ANT_AUT_Percentage",
+        "UMIDADE_REL_MIN_NA_HORA_ANT_AUT_Percentage",
+        "VENTO_DIRECAO_HORARIA_gr",
+        "VENTO_RAJADA_MAXIMA_m_per_s",
+        "VENTO_VELOCIDADE_HORARIA_m_per_s"
+      ]
+    }
+  ]
+}
