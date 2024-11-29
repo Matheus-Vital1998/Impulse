@@ -1,0 +1,20 @@
+# Usar uma imagem base oficial do Python
+FROM python:3.10-slim
+
+# Define o diretório de trabalho no contêiner
+WORKDIR /app
+
+# Copia o arquivo requirements para o contêiner
+COPY requirements_frontend.txt .
+
+# Instala as dependências do aplicativo
+RUN pip install --no-cache-dir -r requirements_frontend.txt
+
+# Copia todo o código da aplicação para o contêiner
+COPY . .
+
+# Expor a porta em que o Streamlit irá rodar
+EXPOSE 8501
+
+# Comando para executar o aplicativo Streamlit
+CMD ["streamlit", "run", "app.py"]
